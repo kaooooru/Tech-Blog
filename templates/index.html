@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+<!-- Page Header -->
+{% block header %}
+  <header class="masthead" style="background-image: url('/static/home.jpeg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Welcome to My Tech Blog</h1>
+            <span class="subheading"></span>Here is where I share my technical learning regularly, enjoy!</span> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>    
+{% endblock %}
+
+
+<!-- Main Content -->
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <a href="{{ url_for('news') }}">
+            <h1 class="post-title">
+              News
+            </h1>
+            <hr>
+            <h3 class="post-subtitle">
+              Click to check out daliy news here!
+            </h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Blog</h1>
+        <hr>
+        {% for post in posts %}
+        <div class="post-preview">
+          <a href="{{ url_for('post', post_id=post.id) }}">
+            <h2 class="post-subtitle">
+              {{ post.title }}
+            </h2>
+          </a>
+          <p class="post-meta">Posted by {{ post.author }} on {{ post.date_post.strftime('%B %d, %Y')}}</p>
+        </div>
+        {% endfor %}
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+{% endblock %}

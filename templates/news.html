@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<!-- Page Header -->
+{% block header %}
+  <header class="masthead" style="background-image: url('/static/news.jpeg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Daily News</h1>
+            <span class="subheading"></span>Remember to checkout technical related News every day!</span> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>      
+{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% for article in articles %}
+      <div class="post-preview">
+        <a href="{{ article['url'] }}">
+          <h2 class="post-title">
+            {{ article['title'] }}
+          </h2>
+          <h3 class="post-subtitle">
+            {{ article['description'] }}
+          </h3>
+        </a>
+        <p class="post-meta">Posted by {{ article['source']['name'] }} on {{ article[publishedAt] }}</p>
+      </div>
+      {% endfor %}
+      <hr>
+    </div>
+  </div>
+</div>
+
+<hr>
+{% endblock %}
